@@ -19,18 +19,7 @@
             return confirm(message || '¿Estás seguro de que quieres eliminar este elemento?');
         }
 
-        // Auto-ocultar mensajes después de 5 segundos
-        document.addEventListener('DOMContentLoaded', function() {
-            const messages = document.querySelectorAll('.message');
-            messages.forEach(function(message) {
-                setTimeout(function() {
-                    message.style.opacity = '0';
-                    setTimeout(function() {
-                        message.remove();
-                    }, 300);
-                }, 5000);
-            });
-        });
+        // Ya no es necesario el auto-ocultado aquí, ahora los popups se gestionan en cada vista
     </script>
 </body>
 </html>

@@ -71,8 +71,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function showMessage(message, type) {
     const messageArea = document.getElementById('message-area');
-    messageArea.innerHTML = `<div class="message ${type}">${message}</div>`;
-    setTimeout(() => messageArea.innerHTML = '', 2000);
+    const msg = document.createElement('div');
+    msg.className = 'message ' + type;
+    msg.textContent = message;
+    messageArea.appendChild(msg);
+    setTimeout(() => {
+        msg.style.opacity = '0';
+        setTimeout(() => msg.remove(), 350);
+    }, 2000);
 }
 
 function updateCartInfo(count, total) {

@@ -42,10 +42,13 @@ function changeQty(btn, change) {
 let messageTimeout;
 function showMessage(message, type) {
     const messageArea = document.getElementById('message-area');
-    messageArea.innerHTML = `<div class="message ${type}">${message}</div>`;
-    if (messageTimeout) clearTimeout(messageTimeout);
-    messageTimeout = setTimeout(() => {
-        messageArea.innerHTML = '';
+    const msg = document.createElement('div');
+    msg.className = 'message ' + type;
+    msg.textContent = message;
+    messageArea.appendChild(msg);
+    setTimeout(() => {
+        msg.style.opacity = '0';
+        setTimeout(() => msg.remove(), 350);
     }, 2000);
 }
 

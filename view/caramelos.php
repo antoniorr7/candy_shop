@@ -32,7 +32,7 @@ include 'view/layout/header.php';
                         <input type="number" name="quantity" value="1" min="1" step="1">
                         <span class="unit-price">x €<?php echo number_format($row['price'], 2); ?></span>
                     </div>
-                    <button type="submit" class="btn-product">SUELTO</button>
+                    <button type="submit" class="btn-product">Añadir Cantidad</button>
                 </form>
             </div>
         </div>
@@ -75,9 +75,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function showMessage(message, type) {
     const messageArea = document.getElementById('message-area');
-    messageArea.innerHTML = `<div class="message ${type}">${message}</div>`;
+    const msg = document.createElement('div');
+    msg.className = 'message ' + type;
+    msg.textContent = message;
+    messageArea.appendChild(msg);
     setTimeout(() => {
-        messageArea.innerHTML = '';
+        msg.style.opacity = '0';
+        setTimeout(() => msg.remove(), 350);
     }, 2000);
 }
 
